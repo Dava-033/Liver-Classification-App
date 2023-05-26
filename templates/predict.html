@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Prediksi Liver</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">  
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+
+  <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" type="text/css">
+
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Sepele</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/form_predict">Prediksi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">Tentang Kami</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid pt-5 pb-5">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Form Prediksi Liver</h2>
+        </div>
+        <div class="col-md-6">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal" style="float: right">
+            <i class="fa fa-question"></i> Bantuan
+          </button>      
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Panduan Pengisian Form</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+              <ol>
+                <li>User masuk ke aplikasi web.</li>
+                <li>Pada halaman awal tekan button “Mulai Prediksi” atau klik menu “Prediksi” pada bagian menu bar.</li>
+                <li>Isi form yang ada di halaman tersebut.</li>
+                <li>Form total bilirubin merupakan kadar bilirubin yang terkandung didalam darah, normalnya berkisar antara 0.2–1.2 mg/dL. Jenis inputan adalah bilangan decimal (contoh : 0,1).</li>
+                <li>Form Direct bilirubin merupakan kadar bilirubin yang terkonjugasi didalam darah, normalnya berkisar antara 0–0.3 mg/dL. Jenis inputan adalah bilangan decimal (contoh : 0,1).</li>
+                <li>Form Alkaline Phospotase adalah tingkat enzim fofatase alkali di dalam darah. Normalnya berkisar antara 85-235 unit/L untuk usia <2 tahun, untuk usia 2-8 tahun berkisar antara 65–210 unit/L, untuk usia 9–15 tahun berkisar antara 60–300 unit/L, untuk usia 16–21 tahun berkisar antara 30–200 unit/L. untuk usia dewasa berkisar antara 30–120 unit/L. Jenis inputan adalah bilangan bulat (contoh : 1, 2, 3, … dst).</li>
+                <li>Form Alamine Aminotransferase adalah jumlah enzim yang terkandung dalam darah. Normalnya berkisar antara 10–40 unit/L untuk laki-laki dan 7–35 unit/L untuk perempuan. Jenis inputan adalah bilangan bulat.</li>
+                <li>Form Aspartate Aminotransferase adalah jumlah enzim golongan transaminase yang berkaitan dengan system kerja hati. Normalnya berkisar antara 14–45 unit/L untuk laki–laki dan 13–37 unit/L untuk perempuan. Jenis inputan adalah bilangan bulat (contoh : 1, 2, 3, … dst).</li>
+                <li>Form Total protein adalah jumlah total protein yang terkandung didalam darah. Normalnya berkisar antara 6-8.3 g/dL. Jenis inputan adalah bilangan decimal (contoh : 0,1).</li>
+                <li>Form albumin adalah jumlah protein utama yang terkandung didalam darah. Normalnya berkisar antara 3.5-4.5 mg/dL. Jenis inputan adalah bilangan decimal (contoh : 0,1).</li>
+                <li>Form Albumin dan Globulin Ratio adalah rasio perbandingan protein albumin dengan globulin. Normalnya berkisar dibawah 1. Jenis Inputan adalah bilangan decimal (contoh : 0,1).</li>
+                <li>Setelah mengisi form tersebut user dapat melihat hasilnya dengan menekan button "Lakukan Prediksi".</li>
+              </ol>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-3">
+
+      <br>
+      
+      <form action="{{ url_for('predict')}}" method="POST">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="age">Usia</label>
+              <input type="number" min="0" max="100" class="form-control" id="age" name="age" placeholder="Usia Anda. Contoh: 35 (Untuk yang berusia 35 tahun)" required />
+            </div>
+
+            <div class="form-group">
+              <label for="gender">Jenis Kelamin</label>
+              <select name="gender" class="form-control">
+                <option value="">- Pilih Jenis Kelamin -</option>
+                <option value="1">Laki - Laki</option>
+                <option value="0">Perempuan</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="totalbillirubin">Total Bilirubin</label>
+              <input type="number" min="0" max="100" step="0.01" class="form-control" id="totalbillirubin" name="totalbillirubin" placeholder="Masukan berupa angka desimal (0,1) dst." required />
+            </div>
+
+            <div class="form-group">
+              <label for="directbillirubin">Direct Bilirubin</label>
+              <input type="number" min="0" max="100" step="0.01" class="form-control" id="directbillirubin" name="directbillirubin" placeholder="Masukan berupa angka desimal (0,1) dst." required />
+            </div>
+
+            <div class="form-group">
+              <label for="alkalinephosphotase">Alkaline Phosphotase</label>
+              <input type="number" min="0" max="10000" class="form-control" id="alkalinephosphotase" name="alkalinephosphotase" placeholder="Masukan berupa angka bilangan bulat" required />
+            </div>            
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="alamineaminotransferase">Alamine Aminotransferase</label>
+              <input type="number" min="0" max="10000" class="form-control" id="alamineaminotransferase" name="alamineaminotransferase" placeholder="Masukan berupa angka bilangan bulat" required />
+            </div>
+
+            <div class="form-group">
+              <label for="aspartateaminotransferase">Aspartate Aminotransferase</label>
+              <input type="number" min="0" max="10000" class="form-control" id="aspartateaminotransferase" name="aspartateaminotransferase" placeholder="Masukan berupa angka bilangan bulat" required />
+            </div>
+
+            <div class="form-group">
+              <label for="totalproteins">Total Proteins</label>
+              <input type="number" min="0" max="100" step="0.01" class="form-control" id="totalproteins" name="totalproteins" placeholder="Masukan berupa angka desimal (0,1) dst." required />
+            </div>
+
+            <div class="form-group">
+              <label for="albumin">Albumin</label>
+              <input type="number" min="0" max="100" step="0.01" class="form-control" id="albumin" name="albumin" placeholder="Masukan berupa angka desimal (0,1) dst." required />
+            </div>
+
+            <div class="form-group">
+              <label For="albuminglobulinratio">Albumin & Globulin Ratio</label>
+              <input type="number" min="0" max="100" step="0.01" class="form-control" id="albuminglobulinratio" name="albuminglobulinratio" placeholder="Masukan berupa angka desimal (0,1) dst." required />
+            </div>
+          </div>
+        </div>            
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Lakukan Prediksi</button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+
+  <div class="container-fluid bg-dark text-white mt-5" style="padding: 20px 0;">
+    <div class="container">
+      <small>&copy; 2023 (Sistem Prediksi Penyakit Liver)</small>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>

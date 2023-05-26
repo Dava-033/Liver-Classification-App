@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>Prediksi Liver</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">	
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
+
+  <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" type="text/css">
+
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="container pt-5">
+
+		<div class="form-group">
+			<a href="/form_predict" class="btn btn-success">
+				<i class="fa fa-angle-double-left"></i> Kembali
+			</a>
+		</div>
+
+		{% if prediction_text == 'Anda terkena Liver' %}
+		<div class="alert alert-danger">
+			<h1>{{ prediction_text }}</h1>
+      <hr class="my-1">
+			<p>Segera periksa dan konsultasikan ke dokter!</p>
+		</div>
+		{% else %}
+		<div class="alert alert-success">
+			<h1>{{ prediction_text }}</h1>
+			<hr class="my-1">
+			<p>Tetaplah waspada dan jaga kesehatan Anda!</p>
+		</div>
+		{% endif %}
+		
+	</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+
+</body>
+
+</html>
