@@ -13,7 +13,7 @@
 }
 
 .display-4{
-	font-weight: 100;
+	font-weight: 200px;
 }
 
 .navbar-brand,
@@ -46,7 +46,7 @@
 }
 
 .jumbotron {
-	background-color: #fff !important;
+	background-color: #ded5d5 !important;
 }
 
 .button-nav-link {
@@ -152,7 +152,7 @@ path.fill-0:hover {
 
 /* FOOTER */
 .feature-footer {
-	background-color: #080C15;
+	background-color: #8070e8;
 	padding: 30px 0 20px 0;
     display: flex;
     justify-content: center;
@@ -160,7 +160,13 @@ path.fill-0:hover {
     height: 10vh;
 }
 
-/* .title-footer {
+.container-footer-about{
+	background-color: #8070e8;
+}
+
+
+
+.title-footer {
 	color: #ADADAD;
 	text-transform: uppercase;
 	font-weight: 700;
@@ -183,9 +189,9 @@ path.fill-0:hover {
 
 footer.footer {
 	color: #ADADAD;
-	background-color: #080C15;
+	background-color: #8070e8;
 	font-size: 14px !important;
-} */
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
